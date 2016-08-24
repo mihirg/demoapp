@@ -1,1 +1,1 @@
-java -javaagent:/Users/mihirgore/Downloads/AppServerAgent/ver4.2.1.6/javaagent.jar -jar build/libs/gradle_tutorial-0.1-all.jar server
+java -javaagent:/Users/mihirgore/Downloads/AppServerAgent/ver4.2.1.6/javaagent.jar -jar build/libs/demoapp-java-0.1-all.jar server
