@@ -1,7 +1,7 @@
 package in.gore;
 
-import in.gore.jmx.api.TestMXBean;
-import in.gore.jmx.impl.TestMBeanImpl;
+import in.gore.jmx.impl.CacheCounterMBeanImpl;
+import in.gore.jmx.impl.SingletonMBeanImpl;
 import in.gore.resources.QuoteResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,12 +29,14 @@ public class App extends Application<TestConfiguration> {
 		e.jersey().register(new QuoteResource());
 
 		// register MBean with jmx server.
+        // refer to http://www.oracle.com/us/technologies/java/best-practices-jsp-136021.html
+        // for details on naming conventions.
 		MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-		ObjectName objName = new ObjectName("in.gore:type=TestBean");
-		TestMXBean mb = new TestMBeanImpl();
-		mbs.registerMBean(mb, objName);
+		mbs.registerMBean(new CacheCounterMBeanImpl(), new ObjectName("in.gore:type=CacheCounter,name=Test1"));
+        mbs.registerMBean(new CacheCounterMBeanImpl(), new ObjectName("in.gore:type=CacheCounter,name=Test2"));
+        mbs.registerMBean(new SingletonMBeanImpl(), new ObjectName("in.gore:type=ClassesLoaded"));
+        LOGGER.info("MBeans registered");
 
-        LOGGER.info("MBean registered");
 	}
 
 	public static void main(String args[]) {
