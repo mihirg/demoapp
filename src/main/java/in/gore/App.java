@@ -2,6 +2,7 @@ package in.gore;
 
 import in.gore.jmx.impl.CacheCounterMBeanImpl;
 import in.gore.jmx.impl.SingletonMBeanImpl;
+import in.gore.resources.DetailsResource;
 import in.gore.resources.QuoteResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class App extends Application<TestConfiguration> {
 	public void run(TestConfiguration c, Environment e) throws Exception {
 		LOGGER.info("Method App#run called.");
 		e.jersey().register(new QuoteResource());
+		e.jersey().register(new DetailsResource());
 
 		// register MBean with jmx server.
         // refer to http://www.oracle.com/us/technologies/java/best-practices-jsp-136021.html
