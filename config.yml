@@ -1,7 +1,9 @@
 server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
   applicationConnectors:
-    type: http
-    port: 9090
+    - type: http
+      port: 9090
   adminConnectors:
-    type: http
-    port: 9091
+    - type: http
+      port: 9091

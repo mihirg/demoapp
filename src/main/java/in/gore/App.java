@@ -45,7 +45,7 @@ public class App extends Application<TestConfiguration> {
 		try {
 			new App().run(args);
 		} catch (Exception exp) {
-            System.out.println(exp);
+            exp.printStackTrace();
 		}
 	}
 }
