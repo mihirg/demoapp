@@ -1,0 +1,9 @@
+{
+    "namespace":"in.gore",
+    "type":"record",
+    "name":"ReaderUser",
+    "fields":[
+        {"name": "name", "type":"string"},
+        {"name": "age", "type": "int"}
+    ]
+}
